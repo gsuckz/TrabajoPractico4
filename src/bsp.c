@@ -21,6 +21,12 @@
 #define TEC_4_PORT 1
 #define TEC_4_PIN 6
 
+
+typedef struct puertoPin{
+    uint8_t puerto;
+    uint8_t pin;
+}puertoPin;
+
 puertoPin botArray[BOT_MAX] = {
     [TEC_1] = {TEC_1_PORT,TEC_1_PIN},
     [TEC_2] = {TEC_2_PORT,TEC_2_PIN},
@@ -41,27 +47,33 @@ puertoPin ledArray[LED_MAX] = {
 void configBoard(void){
     for (int i=0;i<(LED_MAX);i++)
     {
-        configPin(ledArray[i].puerto, ledArray[i].pin, 1);
+        pinGPIO const * const pin = getPin(ledArray[i].puerto,ledArray[i].pin);
+        configPin(pin, SALIDA);
     };
     for (int i=0;i<(BOT_MAX);i++)
     {
-        configPin(botArray[i].puerto ,botArray[i].pin, 1);
+        pinGPIO const * const pin = getPin(botArray[i].puerto,botArray[i].pin);
+        configPin(pin, ENTRADA);
     };
 
 }
 
 void set_led(LED led, bool estado)
 {
-    writePin(ledArray[led].puerto,ledArray[led].pin,estado);
+    pinGPIO const * const pin = getPin(ledArray[led].puerto,ledArray[led].pin);
+    writePin(pin,estado);
 
 }
 
 bool getBotonState(boton bot)
 {
-    readPin(botArray[bot].puerto,botArray[bot].pin);
+    pinGPIO const * const pin = getPin(botArray[bot].puerto,botArray[bot].pin);
+    return readPin(pin);
 }
 
 void toogleLed(LED led)
 {
-    tooglePin(ledArray[led].puerto,ledArray[led].pin);
+    pinGPIO const * const pin = getPin(ledArray[led].puerto,ledArray[led].pin);
+    tooglePin(pin);
+    return;
 }

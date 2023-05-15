@@ -2,11 +2,6 @@
 #define MYBSP_H
 #include "myhal.h"
 
-typedef struct puertoPin{
-    int puerto;
-    int pin;
-}puertoPin;
-
 typedef enum LED{
     LED_1,
     LED_2,
@@ -25,7 +20,30 @@ typedef enum boton{
     BOT_MAX
 }boton;
 
+/**
+ * @brief 
+ * 
+ */
+void configBoard(void);
+/**
+ * @brief
+ * 
+ * @param led 
+ * @param estado 
+ */
 void set_led(LED led, bool estado);
+/**
+ * @brief 
+ * 
+ * @param bot 
+ * @return true 
+ * @return false 
+ */
 bool getBotonState(boton bot);
+/**
+ * @brief 
+ * 
+ * @param led 
+ */
 void toogleLed(LED led);
 #endif
