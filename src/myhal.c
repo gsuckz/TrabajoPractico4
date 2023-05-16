@@ -38,8 +38,8 @@ static pinGPIO const tablaConfigPinGpio[MUX_NUM_PUERTOS][MUX_NUM_PINES] = {
         [8]  = {.puerto=2,.pin= 8,.numRegistroGPIO = 5, .bitRegistroGPIO = 7,  .funcion = 4},
         [9]  = {.puerto=2,.pin= 9,.numRegistroGPIO = 1, .bitRegistroGPIO = 10, .funcion = 0},
         [10] = {.puerto=2,.pin=10,.numRegistroGPIO = 0, .bitRegistroGPIO = 14, .funcion = 0},
-        [11] = {.puerto=2,.pin=11,.numRegistroGPIO = 0, .bitRegistroGPIO = 11, .funcion = 0},
-        [12] = {.puerto=2,.pin=12,.numRegistroGPIO = 0, .bitRegistroGPIO = 12, .funcion = 0}}
+        [11] = {.puerto=2,.pin=11,.numRegistroGPIO = 1, .bitRegistroGPIO = 11, .funcion = 0},
+        [12] = {.puerto=2,.pin=12,.numRegistroGPIO = 1, .bitRegistroGPIO = 12, .funcion = 0}}
 };
 
 pinGPIO const * getPin(uint8_t puerto,uint8_t nrPin)
